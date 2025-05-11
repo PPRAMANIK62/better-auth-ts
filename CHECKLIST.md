@@ -32,17 +32,17 @@
 - [x] create Mount Handler in `app/api/auth/[...all]/route.ts`
 - [x] create Client instance in `lib/auth-client.ts`
 
-- [ ] Enable Email & Password Authentication
-- [ ] Create Sign Up Page PT1
-  - [ ] Create Form `components/register-form.tsx`
-  - [ ] Log Form Values
-- [ ] Setup Sonner
-- [ ] Create Sign Up Page PT2
-  - [ ] Add Form Validation
-  - [ ] Destructure SignUp Function
-  - [ ] Showcase `onError`
-- [ ] OPTIONS - **minPasswordLength**
-- [ ] Create Sign Up Page PT3
+- [x] Enable Email & Password Authentication
+- [x] Create Sign Up Page PT1
+  - [x] Create Form `components/register-form.tsx`
+  - [x] Log Form Values
+- [x] Setup Sonner
+- [x] Create Sign Up Page PT2
+  - [x] Add Form Validation
+  - [x] Destructure SignUp Function
+  - [x] Showcase `onError`
+- [x] OPTIONS - **minPasswordLength**
+- [x] Create Sign Up Page PT3
   - [ ] Sign Up _default automatically signs in the user_
 - [ ] Show Session on Profile Page
 - [ ] Show Data in Neon Dashboard
