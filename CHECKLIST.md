@@ -19,19 +19,18 @@
 - [x] push database changes `bunx prisma db push`
 - [x] adjust **scripts** in `package.json`
 
-- [ ] create single Prisma Client in `lib/prisma.ts`
-- [ ] setup prisma adapter with better-auth
-- [ ] generate auth tables `bunx @better-auth/cli generate --output=auth.schema.prisma`
-- [ ] make tweaks to `schema.prisma`
-- [ ] quick walkthrough the models:
-  - [ ] `User`
-  - [ ] `Session`
-  - [ ] `Account`
-  - [ ] `Verification`
-- [ ] push database changes `bunx prisma db push`
-- [ ] create Mount Handler in `app/api/auth/[...all]/route.ts`
-- [ ] adjust `eslint.config.mjs` to ignore `/src/generated/**/*`
-- [ ] create Client instance in `lib/auth-client.ts`
+- [x] create single Prisma Client in `lib/prisma.ts`
+- [x] setup prisma adapter with better-auth
+- [x] generate auth tables `bunx @better-auth/cli generate --output=auth.schema.prisma`
+- [x] make tweaks to `schema.prisma`
+- [x] quick walkthrough the models:
+  - [x] `User`
+  - [x] `Session`
+  - [x] `Account`
+  - [x] `Verification`
+- [x] push database changes `bunx prisma db push`
+- [x] create Mount Handler in `app/api/auth/[...all]/route.ts`
+- [x] create Client instance in `lib/auth-client.ts`
 
 - [ ] Enable Email & Password Authentication
 - [ ] Create Sign Up Page PT1
