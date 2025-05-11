@@ -3,8 +3,10 @@
 import { signIn } from "@/lib/auth-client";
 import { type LoginFormValues, loginSchema } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { Button } from "./ui/button";
@@ -20,6 +22,7 @@ import { Input } from "./ui/input";
 
 const LoginForm = () => {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -29,23 +32,35 @@ const LoginForm = () => {
   });
 
   const onSubmit = async ({ email, password }: LoginFormValues) => {
-    await signIn.email(
-      {
-        email,
-        password,
-      },
-      {
-        //   onRequest: () => {},
-        //   onResponse: () => {},
-        onError: (ctx) => {
-          toast.error(ctx.error.message);
+    setIsLoading(true);
+    try {
+      await signIn.email(
+        {
+          email,
+          password,
         },
-        onSuccess: () => {
-          toast.success("Logged in successfully");
-          router.push("/profile");
+        {
+          onRequest: () => {
+            setIsLoading(true);
+          },
+          onResponse: () => {
+            setIsLoading(false);
+          },
+          onError: (ctx) => {
+            setIsLoading(false);
+            toast.error(ctx.error.message);
+          },
+          onSuccess: () => {
+            setIsLoading(false);
+            router.push("/profile");
+            toast.success("Logged in successfully");
+          },
         },
-      },
-    );
+      );
+    } catch (error) {
+      setIsLoading(false);
+      toast.error("An unexpected error occurred");
+    }
   };
 
   return (
@@ -93,8 +108,15 @@ const LoginForm = () => {
           </Link>
         </div>
 
-        <Button type="submit" className="w-full">
-          Login
+        <Button type="submit" className="w-full" disabled={isLoading}>
+          {isLoading ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Logging in...
+            </>
+          ) : (
+            "Login"
+          )}
         </Button>
       </form>
     </Form>

@@ -46,15 +46,15 @@
   - [x] Sign Up _default automatically signs in the user_
 - [x] Show Session on Profile Page
 - [x] Show Data in Neon Dashboard
-- [ ] Sign Out User
-  - [ ] Destructure SignOut Function
-  - [ ] Show Removed Cookies
-- [ ] Create Sign In Page PT1
-  - [ ] Create Form `components/login-form.tsx`
-  - [ ] Log Form Values
-  - [ ] Destructure SignIn Function
-- [ ] Show Unauthorized on Profile Page
-- [ ] Create Sign In Page PT2
-  - [ ] Showcase `onError`
-  - [ ] Sign In User
-- [ ] FINISH PART 1
+- [x] Sign Out User
+  - [x] Destructure SignOut Function
+  - [x] Show Removed Cookies
+- [x] Create Sign In Page PT1
+  - [x] Create Form `components/login-form.tsx`
+  - [x] Log Form Values
+  - [x] Destructure SignIn Function
+- [x] Show Unauthorized on Profile Page
+- [x] Create Sign In Page PT2
+  - [x] Showcase `onError`
+  - [x] Sign In User
+- [x] FINISH PART 1

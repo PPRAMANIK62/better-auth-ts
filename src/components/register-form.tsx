@@ -3,8 +3,10 @@
 import { signUp } from "@/lib/auth-client";
 import { registerSchema, type RegisterFormValues } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { Button } from "./ui/button";
@@ -19,7 +21,9 @@ import {
 import { Input } from "./ui/input";
 
 const RegisterForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+
   const form = useForm<RegisterFormValues>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -30,24 +34,37 @@ const RegisterForm = () => {
   });
 
   const onSubmit = async ({ name, email, password }: RegisterFormValues) => {
-    await signUp.email(
-      {
-        name,
-        email,
-        password,
-      },
-      {
-        //   onRequest: () => {},
-        //   onResponse: () => {},
-        onError: (ctx) => {
-          toast.error(ctx.error.message);
+    setIsLoading(true);
+    try {
+      await signUp.email(
+        {
+          name,
+          email,
+          password,
         },
-        onSuccess: () => {
-          toast.success("Account created successfully");
-          router.push("/profile");
+        {
+          onRequest: () => {
+            setIsLoading(true);
+          },
+          onResponse: () => {
+            setIsLoading(false);
+          },
+          onError: (ctx) => {
+            setIsLoading(false);
+            toast.error(ctx.error.message);
+          },
+          onSuccess: () => {
+            setIsLoading(false);
+            router.push("/profile");
+            toast.success("Account created successfully");
+          },
         },
-      },
-    );
+      );
+    } catch (error) {
+      setIsLoading(false);
+      toast.error("An unexpected error occurred");
+      console.error(error);
+    }
   };
 
   return (
@@ -109,8 +126,15 @@ const RegisterForm = () => {
           </Link>
         </div>
 
-        <Button type="submit" className="w-full">
-          Register
+        <Button type="submit" className="w-full" disabled={isLoading}>
+          {isLoading ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Registering...
+            </>
+          ) : (
+            "Register"
+          )}
         </Button>
       </form>
     </Form>
