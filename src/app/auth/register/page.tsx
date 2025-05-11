@@ -16,6 +16,13 @@ const RegisterPage = () => {
       </div>
 
       <RegisterForm />
+
+      <p className="text-muted-foreground text-sm">
+        Already have an account?{" "}
+        <Link href="/auth/login" className="hover:text-foreground">
+          Login
+        </Link>
+      </p>
     </div>
   );
 };

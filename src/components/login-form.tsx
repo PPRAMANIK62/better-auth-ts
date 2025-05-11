@@ -4,7 +4,6 @@ import { signIn } from "@/lib/auth-client";
 import { type LoginFormValues, loginSchema } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -60,6 +59,7 @@ const LoginForm = () => {
     } catch (error) {
       setIsLoading(false);
       toast.error("An unexpected error occurred");
+      console.error(error);
     }
   };
 
@@ -100,13 +100,6 @@ const LoginForm = () => {
             </FormItem>
           )}
         />
-
-        <div className="mt-4 text-center text-sm">
-          Don&apos;t have an account?{" "}
-          <Link href="/auth/register" className="text-primary hover:underline">
-            Register
-          </Link>
-        </div>
 
         <Button type="submit" className="w-full" disabled={isLoading}>
           {isLoading ? (

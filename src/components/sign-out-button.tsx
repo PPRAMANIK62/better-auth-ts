@@ -43,14 +43,13 @@ const SignOutButton = () => {
   return (
     <Button
       onClick={handleClick}
-      size="sm"
       variant="destructive"
-      className="cursor-pointer"
+      className="w-full max-w-sm cursor-pointer"
       disabled={isLoading}
     >
       {isLoading ? (
         <>
-          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          <Loader2 className="h-4 w-4 animate-spin" />
           Signing out...
         </>
       ) : (

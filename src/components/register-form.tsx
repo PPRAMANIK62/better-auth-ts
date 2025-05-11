@@ -4,7 +4,6 @@ import { signUp } from "@/lib/auth-client";
 import { registerSchema, type RegisterFormValues } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -118,13 +117,6 @@ const RegisterForm = () => {
             </FormItem>
           )}
         />
-
-        <div className="mt-4 text-center text-sm">
-          Already have an account?{" "}
-          <Link href="/auth/login" className="text-primary hover:underline">
-            Login
-          </Link>
-        </div>
 
         <Button type="submit" className="w-full" disabled={isLoading}>
           {isLoading ? (
