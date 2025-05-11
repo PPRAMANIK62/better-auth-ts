@@ -1,12 +1,14 @@
 "use client";
 
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { Button } from "./ui/button";
 
 const GetStartedButton = () => {
+  const router = useRouter();
+
   return (
     <Button
-      onClick={() => redirect("/auth/register")}
+      onClick={() => router.push("/auth/register")}
       className="cursor-pointer"
     >
       Get Started

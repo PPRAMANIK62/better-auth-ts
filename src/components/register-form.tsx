@@ -3,6 +3,8 @@
 import { signUp } from "@/lib/auth-client";
 import { registerSchema, type RegisterFormValues } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { Button } from "./ui/button";
@@ -17,6 +19,7 @@ import {
 import { Input } from "./ui/input";
 
 const RegisterForm = () => {
+  const router = useRouter();
   const form = useForm<RegisterFormValues>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -39,7 +42,10 @@ const RegisterForm = () => {
         onError: (ctx) => {
           toast.error(ctx.error.message);
         },
-        //   onSuccess: () => {},
+        onSuccess: () => {
+          toast.success("Account created successfully");
+          router.push("/profile");
+        },
       },
     );
   };
@@ -95,6 +101,13 @@ const RegisterForm = () => {
             </FormItem>
           )}
         />
+
+        <div className="mt-4 text-center text-sm">
+          Already have an account?{" "}
+          <Link href="/auth/login" className="text-primary hover:underline">
+            Login
+          </Link>
+        </div>
 
         <Button type="submit" className="w-full">
           Register

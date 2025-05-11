@@ -3,6 +3,8 @@
 import { signIn } from "@/lib/auth-client";
 import { type LoginFormValues, loginSchema } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { Button } from "./ui/button";
@@ -17,6 +19,7 @@ import {
 import { Input } from "./ui/input";
 
 const LoginForm = () => {
+  const router = useRouter();
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -37,7 +40,10 @@ const LoginForm = () => {
         onError: (ctx) => {
           toast.error(ctx.error.message);
         },
-        //   onSuccess: () => {},
+        onSuccess: () => {
+          toast.success("Logged in successfully");
+          router.push("/profile");
+        },
       },
     );
   };
@@ -79,6 +85,13 @@ const LoginForm = () => {
             </FormItem>
           )}
         />
+
+        <div className="mt-4 text-center text-sm">
+          Don&apos;t have an account?{" "}
+          <Link href="/auth/register" className="text-primary hover:underline">
+            Register
+          </Link>
+        </div>
 
         <Button type="submit" className="w-full">
           Login

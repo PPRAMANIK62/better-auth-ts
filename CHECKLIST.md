@@ -43,9 +43,9 @@
   - [x] Showcase `onError`
 - [x] OPTIONS - **minPasswordLength**
 - [x] Create Sign Up Page PT3
-  - [ ] Sign Up _default automatically signs in the user_
-- [ ] Show Session on Profile Page
-- [ ] Show Data in Neon Dashboard
+  - [x] Sign Up _default automatically signs in the user_
+- [x] Show Session on Profile Page
+- [x] Show Data in Neon Dashboard
 - [ ] Sign Out User
   - [ ] Destructure SignOut Function
   - [ ] Show Removed Cookies
