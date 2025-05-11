@@ -1,3 +1,4 @@
+import SignOutButton from "@/components/sign-out-button";
 import { Button } from "@/components/ui/button";
 import { auth } from "@/lib/auth";
 import { ArrowLeft } from "lucide-react";
@@ -9,6 +10,22 @@ const ProfilePage = async () => {
     headers: await headers(),
   });
 
+  if (!session) {
+    return (
+      <div className="container mx-auto max-w-screen-lg space-y-8 px-8 py-16">
+        <div className="space-y-4">
+          <Button size="icon" asChild>
+            <Link href="/">
+              <ArrowLeft />
+            </Link>
+          </Button>
+          <h1 className="text-3xl font-bold">Profile</h1>
+          <p className="text-destructive">Unauthorized</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="container mx-auto max-w-screen-lg space-y-8 px-8 py-16">
       <div className="space-y-4">
@@ -19,7 +36,7 @@ const ProfilePage = async () => {
         </Button>
         <h1 className="text-3xl font-bold">Profile</h1>
 
-        {/* <SignOutButton /> */}
+        <SignOutButton />
 
         <pre className="overflow-clip text-sm">
           {JSON.stringify(session, null, 2)}
