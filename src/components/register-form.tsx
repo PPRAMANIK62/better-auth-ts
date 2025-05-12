@@ -1,6 +1,6 @@
 "use client";
 
-import { signUp } from "@/lib/auth-client";
+import { signUpAction } from "@/actions/sign-up.action";
 import { registerSchema, type RegisterFormValues } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
@@ -34,35 +34,14 @@ const RegisterForm = () => {
 
   const onSubmit = async ({ name, email, password }: RegisterFormValues) => {
     setIsLoading(true);
-    try {
-      await signUp.email(
-        {
-          name,
-          email,
-          password,
-        },
-        {
-          onRequest: () => {
-            setIsLoading(true);
-          },
-          onResponse: () => {
-            setIsLoading(false);
-          },
-          onError: (ctx) => {
-            setIsLoading(false);
-            toast.error(ctx.error.message);
-          },
-          onSuccess: () => {
-            setIsLoading(false);
-            router.push("/profile");
-            toast.success("Account created successfully");
-          },
-        },
-      );
-    } catch (error) {
+    const { error } = await signUpAction(name, email, password);
+
+    if (error) {
+      toast.error(error);
       setIsLoading(false);
-      toast.error("An unexpected error occurred");
-      console.error(error);
+    } else {
+      toast.success("Account created successfully");
+      router.push("/auth/login");
     }
   };
 

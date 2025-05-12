@@ -58,3 +58,38 @@
   - [x] Showcase `onError`
   - [x] Sign In User
 - [x] FINISH PART 1
+
+### PART 2
+
+- [x] Showcase `onRequest` and `onResponse`
+- [x] Showcase Full Cycle Again
+- [x] Add Convenience Links for Auth Pages
+- [x] OPTIONS - **autoSignIn**
+  - [x] Showcase
+- [x] OPTIONS - **advanced.database.generateId**
+  - [x] Table IDs (change `schema.prisma` and push)
+  - [x] Showcase
+  - [x] Truncate Tables
+- [ ] OPTIONS - **emailAndPassword.password**
+  - [ ] Create User
+  - [ ] Argon2 `npm install @node-rs/argon2`
+  - [ ] Add to `next.config.ts`
+  - [ ] Create Utilities `lib/argon2.ts`
+  - [ ] Add to `lib/auth.ts`
+  - [ ] Showcase
+  - [ ] Truncate Tables
+- [ ] Create User
+- [ ] Sign Up User via SERVER ACTIONS
+  - [ ] Create Action
+  - [ ] Log Form Values
+  - [ ] Sign Up User on Server
+- [ ] Sign In User via SERVER ACTIONS PT1 **HERE HERE HERE**
+  - [ ] Create Action
+  - [ ] Log Form Values
+  - [ ] Sign In User on Server
+  - [ ] Showcase - No Cookies
+  - [ ] Manually Set Cookies
+  - [ ] Showcase - Cookies
+- [ ] Get Additional Session Properties
+- [ ] PLUGINS - **nextCookies()**
+- [ ] FINISH PART 2
