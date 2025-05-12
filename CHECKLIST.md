@@ -64,12 +64,12 @@
 - [x] Showcase `onRequest` and `onResponse`
 - [x] Showcase Full Cycle Again
 - [x] Add Convenience Links for Auth Pages
-- [x] OPTIONS - **autoSignIn**
-  - [x] Showcase
-- [x] OPTIONS - **advanced.database.generateId**
-  - [x] Table IDs (change `schema.prisma` and push)
-  - [x] Showcase
-  - [x] Truncate Tables
+- [ ] OPTIONS - **autoSignIn**
+  - [ ] Showcase
+- [ ] OPTIONS - **advanced.database.generateId**
+  - [ ] Table IDs (change `schema.prisma` and push)
+  - [ ] Showcase
+  - [ ] Truncate Tables
 - [ ] OPTIONS - **emailAndPassword.password**
   - [ ] Create User
   - [ ] Argon2 `npm install @node-rs/argon2`
@@ -93,3 +93,21 @@
 - [ ] Get Additional Session Properties
 - [ ] PLUGINS - **nextCookies()**
 - [ ] FINISH PART 2
+
+== PART 3 ==
+
+- [x] Get Session on Client
+  - [x] Create Get Started Button
+  - [x] Destructure useSession
+  - [x] Showcase
+- [ ] OPTIONS - **session.expiresIn**
+  - [ ] Change to 15 seconds
+  - [ ] Showcase
+  - [ ] Change to 30 days
+- [ ] Middleware
+  - [ ] check for existence of a session cookie
+  - [ ] showcase on auth routes
+- [ ] Error Handling
+- [ ] Hooks
+  - [ ] Validate Email
+  - [ ] Transform Name

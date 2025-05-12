@@ -4,28 +4,14 @@ import { auth } from "@/lib/auth";
 import { ArrowLeft } from "lucide-react";
 import { headers } from "next/headers";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 const ProfilePage = async () => {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
-  console.log(session)
 
-  if (!session) {
-    return (
-      <div className="container mx-auto max-w-screen-lg space-y-8 px-8 py-16">
-        <div className="space-y-4">
-          <Button size="icon" asChild>
-            <Link href="/">
-              <ArrowLeft />
-            </Link>
-          </Button>
-          <h1 className="text-3xl font-bold">Profile</h1>
-          <p className="text-destructive">Unauthorized</p>
-        </div>
-      </div>
-    );
-  }
+  if (!session) redirect("/auth/login");
 
   return (
     <div className="container mx-auto max-w-screen-lg space-y-8 px-8 py-16">
