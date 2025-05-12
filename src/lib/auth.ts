@@ -7,6 +7,7 @@ const prisma = new PrismaClient();
 export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
+    minPasswordLength: 8,
   },
   database: prismaAdapter(prisma, {
     provider: "postgresql",

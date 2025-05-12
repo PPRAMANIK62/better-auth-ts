@@ -1,14 +1,12 @@
 "use server";
 
-import { auth } from "@/lib/auth";
+import { signIn } from "@/lib/auth-client";
 
 export const signInAction = async (email: string, password: string) => {
   try {
-    await auth.api.signInEmail({
-      body: {
-        email,
-        password,
-      },
+    await signIn.email({
+      email,
+      password,
     });
     return { error: null };
   } catch (err) {

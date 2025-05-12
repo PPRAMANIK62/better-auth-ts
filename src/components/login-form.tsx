@@ -1,6 +1,6 @@
 "use client";
 
-import { signInAction } from "@/actions/sign-in.action";
+import { signIn } from "@/lib/auth-client";
 import { type LoginFormValues, loginSchema } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
@@ -32,14 +32,28 @@ const LoginForm = () => {
 
   const onSubmit = async ({ email, password }: LoginFormValues) => {
     setIsLoading(true);
-    const { error } = await signInAction(email, password);
-
-    if (error) {
-      toast.error(error);
+    try {
+      await signIn.email(
+        {
+          email,
+          password,
+        },
+        {
+          onError: (ctx) => {
+            setIsLoading(false);
+            toast.error(ctx.error.message);
+          },
+          onSuccess: () => {
+            setIsLoading(false);
+            router.push("/profile");
+            toast.success("Logged in successfully");
+          },
+        },
+      );
+    } catch (error) {
       setIsLoading(false);
-    } else {
-      toast.success("Logged in successfully");
-      router.push("/profile");
+      toast.error("An unexpected error occurred");
+      console.error(error);
     }
   };
 

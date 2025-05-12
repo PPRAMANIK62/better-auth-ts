@@ -1,6 +1,6 @@
 "use server";
 
-import { auth } from "@/lib/auth";
+import { signUp } from "@/lib/auth-client";
 
 export const signUpAction = async (
   name: string,
@@ -8,12 +8,10 @@ export const signUpAction = async (
   password: string,
 ) => {
   try {
-    await auth.api.signUpEmail({
-      body: {
-        name,
-        email,
-        password,
-      },
+    await signUp.email({
+      name,
+      email,
+      password,
     });
     return { error: null };
   } catch (err) {
