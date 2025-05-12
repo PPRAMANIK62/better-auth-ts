@@ -100,13 +100,13 @@
   - [x] Create Get Started Button
   - [x] Destructure useSession
   - [x] Showcase
-- [ ] OPTIONS - **session.expiresIn**
-  - [ ] Change to 15 seconds
-  - [ ] Showcase
-  - [ ] Change to 30 days
-- [ ] Middleware
-  - [ ] check for existence of a session cookie
-  - [ ] showcase on auth routes
+- [x] OPTIONS - **session.expiresIn**
+  - [x] Change to 15 seconds
+  - [x] Showcase
+  - [x] Change to 30 days
+- [x] Middleware
+  - [x] check for existence of a session cookie
+  - [x] showcase on auth routes
 - [ ] Error Handling
 - [ ] Hooks
   - [ ] Validate Email
